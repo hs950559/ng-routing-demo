@@ -50,6 +50,15 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: CustomPreloadingStrategyService,
+      // scrollPositionRestoration: 'enabled',
+      // useHash: true,
+      // enableTracing: true,
+      // paramsInheritanceStrategy: 'always',
+      // malformedUriErrorHandler: (
+      //   error: URIError,
+      //   urlSerializer: UrlSerializer,
+      //   url: string
+      // ) => urlSerializer.parse("/page-not-found"),
     }),
   ],
   exports: [RouterModule],

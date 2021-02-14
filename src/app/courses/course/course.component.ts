@@ -20,7 +20,7 @@ export class CourseComponent implements OnInit {
     this.couponCode = this.route.snapshot.queryParamMap.get("couponCode");
   }
 
-  confirmExit() {
+  confirmExit(): boolean {
     return confirm("Are your sure you want to exit?");
   }
 }

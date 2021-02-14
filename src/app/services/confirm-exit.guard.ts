@@ -11,12 +11,8 @@ import { CourseComponent } from "../courses/course/course.component";
 @Injectable({
   providedIn: "root",
 })
-export class ConfirmExitGuard implements CanDeactivate {
-  canDeactivate(
-    component: CourseComponent,
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+export class ConfirmExitGuard implements CanDeactivate<CourseComponent> {
+  canDeactivate(component: CourseComponent): boolean {
     return component.confirmExit();
   }
 }
