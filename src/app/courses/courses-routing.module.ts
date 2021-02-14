@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuard } from "../services/auth.guard";
+import { ConfirmExitGuard } from "../services/confirm-exit.guard";
 import { CourseComponent } from "./course/course.component";
 import { HomeComponent } from "./home/home.component";
 import { LessonDetailComponent } from "./lesson/lesson-detail.component";
@@ -16,6 +18,9 @@ const routes: Routes = [
   {
     path: ":courseUrl",
     component: CourseComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    canDeactivate: [ConfirmExitGuard],
     resolve: {
       course: CourseResolver,
     },
@@ -41,6 +46,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [CourseResolver, LessonResolver, LessonDetailResolver],
+  providers: [CourseResolver, LessonResolver, LessonDetailResolver, AuthGuard],
 })
 export class CoursesRoutingModule {}
